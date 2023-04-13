@@ -50,6 +50,7 @@ Tools:
 More details can be found in [Packages](https://docs.getdbt.com/docs/build/packages)
 
 ### 💡 Deploy to production
+Using profiles.yml to seperate different envs
 
 
 ### 🙋 Q&A
