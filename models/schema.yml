@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: people_v001
+    database: tw-people-systems-dp
+    schema: people_v001    
+    tables:
+      - name: employee_snapshot
+  - name: staffing_v000  
+    database: tw-dp-staffing-team-prod
+    schema: staffing_v000    
+    tables:
+      - name: assignment
+  - name: pathways  
+    database: tw-empo-twer-growth-dp-dev
+    schema: pathways
+    tables:
+      - name: capable_archetype_data_v000
+  - name: capability_mart_v001  
+    database: tw-empo-twer-growth-dp-dev
+    schema: capability_mart_v001
+    tables:
+      - name: fact_user_archetype
+
+models:
+  - name: assignment
+    description: One record per assignment
+    columns:
+      - name: id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: employee_id
+        description: not null
+  - name: dim_stage
+    description: This model store stage infos
+    columns:
+      - name: stage_name
+        tests:
+          - dbt_expectations.expect_column_to_exist
+          - accepted_values:
+              values: ['Me Now', 'Me Next', 'Both Me Now and Me Next']
+      - name: stage_num
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0  
+              max_value: 2 
