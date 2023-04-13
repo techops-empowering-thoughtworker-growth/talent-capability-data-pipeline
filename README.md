@@ -12,24 +12,29 @@ Welcome to ttdp talent capability data pipeline dbt!
 
 3. Development
     ```shell
-    // Test the database connection and show information for debugging purposes
+    # Test the database connection and show information for debugging purposes
     dbt debug
 
-    // Connects to the target database and runs the relevant SQL required to materialize all data models using the specified materialization strategies
+    # Connects to the target database and runs the relevant SQL required to materialize all data models using the specified materialization strategies
     dbt run
 
-    // Running test
+    # build and test all selected resources (models, seeds, snapshots, tests)
+    dbt build
+
+    # Running test
     dbt test
 
-    // Generate docs
+    # Generate docs
     dbt docs serve --port 8001
     ```
 
 ### 🍃 Testing
-
-Scope:
-1. model
-2. source
+Testing scope and content:
+1. [Must have] model: 
+    1. column testing: dev
+    2. scenario testing: dev & qa. QA prepares test data and scenarios before kick off, dev completes scenario testing in the card
+2. [Nice to have] source
+3. [Nice to have] macros
 
 Tools:
 1. Using [dbt-core test]()
@@ -53,14 +58,15 @@ More details can be found in [Packages](https://docs.getdbt.com/docs/build/packa
 
 ### Resources
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
+- [Custom profile directory](https://docs.getdbt.com/docs/core/connection-profiles#advanced-customizing-a-profile-directory)
+- [dbt command reference](https://docs.getdbt.com/reference/dbt-commands)
 
 ### Preparation
-
 - [ ] Repo configuration: initialization, talisman, git hooks, README
 - [ ] Development
-- [ ] Testing scope for dev
-- [ ] Testing scope for QA
+- [ ] Testing
 - [ ] CI: dev and prod
+- [ ] Alert
 
 
 
